@@ -13,7 +13,7 @@ func generador(nums ...int) <-chan int {
 	return outCh
 }
 
-func cuadrado(in <-chan int) <- chan int {
+func cuadrado(in <-chan int) <-chan int {
 	outCh := make(chan int)
 
 	go func() {
@@ -26,10 +26,10 @@ func cuadrado(in <-chan int) <- chan int {
 }
 
 func main() {
-	c1 := generador(1,2,3,4,5)
+	c1 := generador(1, 2, 3, 4, 5)
 	c2 := cuadrado(c1)
 
-	for n := range c2{
+	for n := range c2 {
 		fmt.Println(n)
 	}
 }

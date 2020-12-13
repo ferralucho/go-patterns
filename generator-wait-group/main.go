@@ -11,7 +11,7 @@ type Result struct {
 	Url        string
 }
 
-func PingUrl(url string, group *sync.WaitGroup) (Result) {
+func PingUrl(url string, group *sync.WaitGroup) Result {
 	res, err := http.Get(url)
 	if err != nil {
 		print(err.Error())

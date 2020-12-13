@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-func main(){
+func main() {
 	requests := make(chan int, 5)
 	for i := 1; i <= 5; i++ {
 		requests <- i
@@ -21,7 +21,7 @@ func main(){
 	rafaga := make(chan time.Time, 3)
 
 	go func() {
-		for t := range time.Tick(1000 * time.Millisecond){
+		for t := range time.Tick(1000 * time.Millisecond) {
 			for i := 1; i <= 3; i++ {
 				rafaga <- t
 			}
@@ -34,7 +34,7 @@ func main(){
 	}
 	close(rafagaRequest)
 	for req := range rafagaRequest {
-		<- rafaga
+		<-rafaga
 		fmt.Println("request", req, time.Now())
 	}
 }
